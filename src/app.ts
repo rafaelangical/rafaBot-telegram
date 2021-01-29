@@ -2,10 +2,9 @@ import TelegramBot from "node-telegram-bot-api";
 import axios from "axios";
 import moment from "moment";
 import express from "express";
-import dotenv from "dotenv";
 import path from 'path';
 
-dotenv.config({ path: path.join(__dirname, '../.env') });
+if (process.env.NODE_ENV !== 'production') require('dotenv').config({ path: path.join(__dirname, '../.env') })
 
 const NASA_KEY = process.env.NASA_KEY;
 const NASA_ENDPOINT = process.env.NASA_ENDPOINT;
