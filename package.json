@@ -23,6 +23,8 @@
   },
   "scripts": {
     "dev": "nodemon src/app.ts",
-    "start": "tsc && node dist/app.js"
+    "start": "node dist/app.js",
+    "build": "tsc",
+    "postinstall": "yarn run build"
   }
 }
