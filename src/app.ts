@@ -78,6 +78,6 @@ bot.on('message', async (msg: TelegramBot.Message) => {
     msg.chat.id,
     `Olá ${
       `${msg.from.first_name} ${msg.from.last_name}`
-    }, essa é uma mensagem automática :) \nPara saber se existe algum asteroide perto da terra digite: \nAlgum asteroide oferece perigo ao planeta Terra na data de hoje?  ?`,
+    }, essa é uma mensagem automática :) \nPara saber se existe algum asteroide perto da terra digite: \nAlgum asteroide oferece perigo ao planeta Terra na data de hoje?`,
   );
 });
