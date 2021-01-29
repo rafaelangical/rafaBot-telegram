@@ -1,30 +1,33 @@
-import TelegramBot from 'node-telegram-bot-api';
+import TelegramBot from "node-telegram-bot-api";
 import axios from "axios";
 import moment from "moment";
-import express from 'express';
-import 'dotenv/config'
+import express from "express";
+import dotenv from "dotenv";
+import path from 'path';
+
+dotenv.config({ path: path.join(__dirname, '../.env') });
 
 const NASA_KEY = process.env.NASA_KEY;
 const NASA_ENDPOINT = process.env.NASA_ENDPOINT;
 const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 const bot = new TelegramBot(TELEGRAM_TOKEN as string, { polling: true });
 
-app.get('/', (req, res) => {
-  res.send("Hello i'am rafaBot :)")
-})
+app.get("/", (req, res) => {
+  res.send("Hello i'am rafaBot :)");
+});
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port: ${PORT}`)
-})
+  console.log(`Example app listening on port: ${PORT}`);
+});
 
 bot.on("new_chat_members", (msg: any) => {
   bot.sendMessage(msg.chat.id, `Olá ${msg.from.first_name}, bem vindo(a) !!`);
 });
 
-bot.on('message', async (msg: any) => {
+bot.on("message", async (msg: any) => {
   console.log("message obj of user", msg);
   const thermMatch =
     "Algum asteroide oferece perigo ao planeta Terra na data de hoje?";

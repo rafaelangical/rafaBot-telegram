@@ -16,14 +16,16 @@ const node_telegram_bot_api_1 = __importDefault(require("node-telegram-bot-api")
 const axios_1 = __importDefault(require("axios"));
 const moment_1 = __importDefault(require("moment"));
 const express_1 = __importDefault(require("express"));
-require("dotenv/config");
+const dotenv_1 = __importDefault(require("dotenv"));
+const path_1 = __importDefault(require("path"));
+dotenv_1.default.config({ path: path_1.default.join(__dirname, '../.env') });
 const NASA_KEY = process.env.NASA_KEY;
 const NASA_ENDPOINT = process.env.NASA_ENDPOINT;
 const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
 const PORT = process.env.PORT || 3000;
 const app = express_1.default();
 const bot = new node_telegram_bot_api_1.default(TELEGRAM_TOKEN, { polling: true });
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
     res.send("Hello i'am rafaBot :)");
 });
 app.listen(PORT, () => {
@@ -32,7 +34,7 @@ app.listen(PORT, () => {
 bot.on("new_chat_members", (msg) => {
     bot.sendMessage(msg.chat.id, `Olá ${msg.from.first_name}, bem vindo(a) !!`);
 });
-bot.on('message', (msg) => __awaiter(void 0, void 0, void 0, function* () {
+bot.on("message", (msg) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("message obj of user", msg);
     const thermMatch = "Algum asteroide oferece perigo ao planeta Terra na data de hoje?";
     if (msg.text.toLowerCase() === thermMatch.toLowerCase()) {
