@@ -27,6 +27,11 @@ yarn build or npm run build
 yarn start or npm run start
 ```
 
+## Runing lint 
+```shell
+yarn lint or npm run lint
+```
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/rafaelangical/rafaBot-telegram/blob/main/LICENSE) file for details. 
